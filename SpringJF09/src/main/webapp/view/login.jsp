@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3>Login Page</h3>
-<h4 style="color:red">${user}</h4>
+<h4 style="color:red">${user1}</h4>
 <form action="loginControl" method="post">
 name:<input type="text" name="username"><br>
 password:<input type="password" name="userpassword"><br>

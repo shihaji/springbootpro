@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@SessionAttributes("user1")
 public class LoginController {
 	
 	@Autowired
@@ -27,11 +29,11 @@ public class LoginController {
 		if(loginBo.validateUser(user)) {
 			
 			mv.setViewName("home");
-			mv.addObject("user",user.getUsername());
+			mv.addObject("user1",user.getUsername());
 			
 		}else {
 			mv.setViewName("login");
-			mv.addObject("user","Invalid user");
+			mv.addObject("user1","Invalid user");
 		}
 		
 		
