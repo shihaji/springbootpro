@@ -22,10 +22,25 @@ public class LoginController {
 	}
 	
 	@PostMapping("loginControl")
-	public ModelAndView loginUser(User user) {
+	public String loginUser(@RequestParam String username,@RequestParam String userpassword) {
+			
 		
+		return "forward:/validate";  // forward happens at server side  and url wont change
 		
+	}
+	
+	@PostMapping("validate")
+	public ModelAndView validateUser(String username,String userpassword) {
+		
+		System.out.println("in validate user method");
+		
+      User user=new User();
+		
+		user.setUsername(username);
+		user.setUserpassword(userpassword);
+				
 		ModelAndView mv=new ModelAndView();
+		
 		if(loginBo.validateUser(user)) {
 			
 			mv.setViewName("home");
@@ -36,10 +51,9 @@ public class LoginController {
 			mv.addObject("user1","Invalid user");
 		}
 		
-		
-		
 		return mv;
-		
 	}
+	
+	
 
 }
